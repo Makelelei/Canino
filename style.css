@@ -1,0 +1,711 @@
+/* --- Variables CSS para colores (¡Fácil de cambiar!) --- */
+:root {
+    --bg-dark: #1a1a1a;
+    --text-light: #f0f0f0;
+    --accent-primary: #FF6F61; /* Naranja/Coral vibrante */
+    --accent-secondary: #6a8e73; /* Verde/Azulado */
+    --card-bg: #222;
+    --border-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --transition-speed: 0.5s; /* Velocidad global para transiciones */
+}
+
+/* --- Estilos Generales --- */
+html {
+    scroll-behavior: smooth; /* Desplazamiento suave para anclas internas */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; /* Fuente moderna, asegúrate de importarla */
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+    color: var(--text-light);
+    background-color: var(--bg-dark);
+    transition: background-color var(--transition-speed) ease-in-out, color var(--transition-speed) ease-in-out;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px 0; /* Un poco de padding vertical para todas las secciones */
+}
+
+h1, h2, h3, h4 {
+    color: var(--accent-primary);
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 700; /* Negrita para títulos */
+}
+
+p {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-light); /* Asegura que los párrafos mantengan el color claro */
+}
+
+/* --- Botones --- */
+.btn {
+    display: inline-block;
+    background: var(--accent-primary);
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 10px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.btn:hover {
+    background: #e65c50; /* Un tono más oscuro del acento */
+    transform: translateY(-2px); /* Pequeño efecto de elevación */
+}
+
+.btn.secondary {
+    background: var(--accent-secondary);
+}
+
+.btn.secondary:hover {
+    background: #5a7d65;
+}
+
+/* --- Header --- */
+header {
+    background: var(--card-bg); /* Fondo del header similar al de las tarjetas */
+    color: var(--text-light);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px var(--shadow-color);
+    position: sticky; /* Sticky header para que se quede arriba */
+    top: 0;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+header .container {
+    display: flex; /* Flexbox para alinear logo y nav */
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; /* Padding para evitar que el contenido toque los bordes */
+}
+
+header .logo {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent-primary);
+    letter-spacing: 1px;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-left: 30px;
+}
+
+header nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+header nav a::after { /* Efecto de subrayado al pasar el mouse */
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: var(--accent-primary);
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s ease-in-out;
+}
+
+header nav a:hover::after {
+    width: 100%;
+}
+
+header nav a:hover {
+    color: var(--accent-primary);
+}
+
+/* --- Hero Section (Portada) --- */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../img/perro-paseando-palermo.jpg') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 120px 0;
+    display: flex; /* Para centrar el contenido verticalmente */
+    align-items: center;
+    min-height: 60vh; /* Altura mínima de la vista */
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.hero h2 {
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    color: #fff;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    color: #ccc;
+}
+
+.cta-buttons {
+    margin-top: 30px;
+}
+
+/* --- Sección "Por qué elegirnos" (mini-features) --- */
+.about-us-mini {
+    padding: 80px 0;
+    background-color: var(--bg-dark);
+}
+
+.about-us-mini h3 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: var(--text-light);
+}
+
+.features {
+    display: flex;
+    justify-content: center; /* Centra los items */
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.feature-item {
+    flex-basis: calc(33% - 40px); /* Aproximadamente 3 por fila, con gap */
+    min-width: 280px;
+    padding: 30px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px var(--shadow-color);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px var(--shadow-color);
+}
+
+.feature-item img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+    filter: invert(1); /* Invierte colores para iconos blancos en fondo oscuro */
+}
+
+.feature-item h4 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: var(--accent-primary);
+}
+
+.feature-item p {
+    font-size: 1.1rem;
+    color: #bbb;
+}
+
+/* --- Página de Servicios --- */
+.services-page, .prices-page, .about-page, .contact-page {
+    padding: 80px 0;
+    background-color: var(--bg-dark);
+}
+
+.services-page h2, .prices-page h2, .about-page h2, .contact-page h2 {
+    font-size: 3rem;
+    color: var(--text-light);
+    margin-bottom: 40px;
+}
+
+.service-card {
+    background-color: var(--card-bg);
+    padding: 40px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px var(--shadow-color);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px var(--shadow-color);
+}
+
+.service-card h3 {
+    color: var(--accent-primary);
+    font-size: 2.2rem;
+    margin-top: 0;
+    text-align: left;
+}
+
+.service-card p {
+    color: #ccc;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.service-card ul {
+    list-style: none; /* Quitamos los bullets */
+    margin-left: 0;
+    padding: 0;
+}
+
+.service-card ul li {
+    margin-bottom: 10px;
+    color: #ccc;
+    position: relative;
+    padding-left: 25px;
+}
+
+.service-card ul li::before { /* Icono de check para listas */
+    content: '✓';
+    color: var(--accent-secondary);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.services-page .cta-bottom,
+.prices-page .cta-bottom,
+.about-page .cta-bottom {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* --- Estilos para Precios --- */
+.price-table-container {
+    overflow-x: auto;
+    margin-bottom: 40px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.prices-page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    min-width: 600px; /* Asegura un ancho mínimo para la tabla */
+}
+
+.prices-page th, .prices-page td {
+    padding: 15px 20px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+    white-space: nowrap;
+    color: var(--text-light);
+}
+
+.prices-page th {
+    background-color: var(--accent-secondary);
+    color: #fff;
+    font-weight: bold;
+}
+
+.prices-page tr:nth-child(even) {
+    background-color: #2a2a2a; /* Tono ligeramente diferente para filas pares */
+}
+
+.prices-page tr:hover {
+    background-color: #3a3a3a;
+}
+
+.notes-payment {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px var(--shadow-color);
+    margin-top: 40px;
+    text-align: left;
+}
+
+.notes-payment h3 {
+    text-align: left;
+    color: var(--accent-primary);
+    margin-bottom: 20px;
+}
+
+.notes-payment ul {
+    list-style: none; /* Quitamos los bullets */
+    margin-left: 0;
+    padding: 0;
+}
+
+.notes-payment ul li {
+    margin-bottom: 10px;
+    color: #ccc;
+    position: relative;
+    padding-left: 25px;
+}
+
+.notes-payment ul li::before { /* Icono de check para listas */
+    content: '★'; /* Puedes usar un • o cualquier otro carácter */
+    color: var(--accent-secondary);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+/* --- Estilos para Nosotros --- */
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center; /* Centra verticalmente si los tamaños son diferentes */
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.about-image {
+    flex: 1;
+    min-width: 300px;
+    max-width: 450px; /* Un poco más grande la imagen */
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 8px 16px var(--shadow-color);
+    transition: transform 0.3s ease;
+}
+.about-image:hover {
+    transform: scale(1.02);
+}
+
+.about-text {
+    flex: 2;
+    min-width: 300px;
+    text-align: left;
+    color: #ccc;
+}
+
+.about-text h3 {
+    text-align: left;
+    color: var(--accent-primary);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.about-text ul {
+    list-style: none; /* Quitamos los bullets */
+    margin-left: 0;
+    padding: 0;
+}
+
+.about-text ul li {
+    margin-bottom: 10px;
+    color: #ccc;
+    position: relative;
+    padding-left: 25px;
+}
+
+.about-text ul li::before { /* Icono de check para listas */
+    content: '✓';
+    color: var(--accent-secondary);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* --- Estilos para Contacto --- */
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+}
+
+.contact-form-container,
+.contact-info-container {
+    flex: 1;
+    min-width: 320px; /* Ajuste para móviles */
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.contact-form-container h3,
+.contact-info-container h3 {
+    color: var(--accent-primary);
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form select,
+.contact-form textarea {
+    width: calc(100% - 24px); /* Ancho completo menos padding */
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #333; /* Fondo oscuro para inputs */
+    color: var(--text-light);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(255, 111, 97, 0.3); /* Resplandor al enfocar */
+    outline: none;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.contact-info-container p,
+.contact-info-container ul {
+    text-align: left;
+    margin-bottom: 12px;
+    color: #ccc;
+}
+
+.contact-info-container a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info-container a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.contact-info-container ul {
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+}
+
+.contact-info-container ul li {
+    margin-bottom: 8px;
+}
+
+.social-links-contact {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.social-links-contact h4 {
+    margin-bottom: 15px;
+    color: var(--text-light);
+    text-align: left;
+}
+
+.social-links-contact img {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    filter: invert(1); /* Invierte para iconos blancos */
+    transition: transform 0.3s ease;
+}
+
+.social-links-contact img:hover {
+    transform: scale(1.15);
+}
+
+.map-container {
+    margin-top: 30px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+.map-container iframe {
+    width: 100%;
+    height: 300px; /* Altura fija para el mapa */
+    border: 0;
+}
+
+
+/* --- Footer --- */
+footer {
+    background: var(--card-bg);
+    color: #bbb;
+    text-align: center;
+    padding: 30px 0;
+    border-top: 1px solid var(--border-color);
+    box-shadow: 0 -5px 15px var(--shadow-color);
+}
+
+footer p {
+    margin: 0;
+    color: #bbb;
+}
+
+.social-links {
+    margin-top: 15px;
+}
+
+.social-links img {
+    width: 35px;
+    height: 35px;
+    margin: 0 12px;
+    filter: invert(1); /* Para que los íconos de redes sociales sean blancos */
+    transition: transform 0.3s ease;
+}
+
+.social-links img:hover {
+    transform: scale(1.2);
+}
+
+/* --- Responsiveness (Media Queries) --- */
+@media (max-width: 992px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    header nav ul li {
+        margin: 0 15px;
+    }
+    .hero h2 {
+        font-size: 3rem;
+    }
+    .hero p {
+        font-size: 1.1rem;
+    }
+    .feature-item {
+        flex-basis: calc(50% - 30px); /* 2 por fila en tablets */
+    }
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .about-image {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    header .logo {
+        font-size: 1.8rem;
+    }
+    header nav ul {
+        display: flex; /* Mantiene la navegación en una fila en algunos móviles */
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 15px;
+    }
+    header nav ul li {
+        margin: 5px 10px;
+    }
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+    .feature-item, .service-card, .price-table-container, .notes-payment, .about-content, .contact-form-container, .contact-info-container {
+        padding: 25px;
+        border-radius: 8px; /* Ligeramente menos redondeado en móvil */
+    }
+    .feature-item {
+        flex-basis: 90%; /* Uno por fila en móviles */
+    }
+    .prices-page th, .prices-page td {
+        padding: 10px 15px;
+        font-size: 0.85rem;
+    }
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form input[type="tel"],
+    .contact-form select,
+    .contact-form textarea {
+        width: calc(100% - 20px);
+        padding: 10px;
+    }
+    .contact-form button {
+        padding: 12px;
+        font-size: 1rem;
+    }
+    .map-container iframe {
+        height: 250px;
+    }
+}
+
+/* --- Animación de Transición de Página (JavaScript) --- */
+.page-transition {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.page-transition-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* --- Animación de Secciones (Fade-in on Scroll) --- */
+.animated-section {
+    opacity: 0;
+    transform: translateY(30px); /* Empieza un poco abajo */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transición suave */
+    will-change: opacity, transform; /* Optimización para animaciones */
+}
+
+.animated-section.is-visible {
+    opacity: 1;
+    transform: translateY(0); /* Vuelve a su posición original */
+}
+
+/* Puedes añadir un pequeño retraso a ciertos elementos si quieres que aparezcan escalonados */
+/* Ejemplo: Si quieres que los feature-item o service-card aparezcan con retraso */
+.animated-section.delay-1 { transition-delay: 0.1s; }
+.animated-section.delay-2 { transition-delay: 0.2s; }
+.animated-section.delay-3 { transition-delay: 0.3s; }
+/* ... y así sucesivamente para crear un efecto de "cascada" */
